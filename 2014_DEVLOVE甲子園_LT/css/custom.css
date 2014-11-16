@@ -1,0 +1,60 @@
+.reveal {
+  font-size: 30px;
+}
+.reveal .slides>section[data-background],
+.reveal .slides>section>section[data-background] {
+  background-color: rgba(255,255,255,0.6);
+  padding: 30px;
+}
+.reveal .slides>section li {
+  margin-top: 0.8em;
+}
+.reveal .slides h1,
+.reveal .slides h2,
+.reveal .slides h3 {
+  text-transform: none;
+}
+.reveal .slides h2 {
+  font-size: 1.5em;
+  margin-bottom: 1.0em;
+}
+.reveal .slides h3 {
+  font-size: 2.8em;
+}
+.reveal .slides #top h2 {
+  font-size: 2.3em;
+  margin-bottom: 0.5em;
+}
+.reveal .slides #top h3 {
+  font-size: 1.5em;
+  margin-bottom: 1.0em;
+}
+.reveal .slides #top p {
+  font-size: 0.8em;
+}
+.reveal .slides .em1 {
+  font-size: 2.8em;
+}
+.reveal .slides .em2 {
+  font-size: 1.5em;
+}
+.reveal .slides img {
+  border: none;
+}
+.reveal .slides .chart {
+  background: transparent;
+  box-shadow: none;
+}
+
+.reveal ul ul {
+    list-style-type: circle;
+    font-size: 80%;
+}
+
+.intro td {
+  vertical-align: top;
+}
+
+.reveal .small {
+    font-size: 0.8em;
+}
