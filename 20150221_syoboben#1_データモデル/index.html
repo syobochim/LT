@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script>
+        document.write('<link rel="stylesheet" href="css/print/' + ( window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+
+        <section>
+            <h1>初めてデータモデル</h1>
+            <h1>設計と</h1>
+            <h1>向き合ってみた</h1>
+            ※スペースですすむ！バックスペースでもどる！
+        </section>
+
+        <section>
+            <h2>こんにちは！</h2>
+
+            <table style="margin-left: 200px;">
+                <tr class="intro">
+                    <td>
+                        <img src="images/syobochim.jpeg"/>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="https://twitter.com/syobochim">@syobochim</a></li>
+                            <li>和田みずき</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <section data-transition="fade" data-markdown>
+                # 突然ですが
+            </section>
+            <section data-transition="fade" data-markdown>
+                # あなたのチームの
+                # データモデル設計は
+                # どうなってますか？
+            </section>
+            <section data-transition="fade" data-markdown>
+                # チームの
+                # 若手メンバーには
+                # データモデル設計を
+                # 任せられますか？
+            </section>
+        </section>
+
+        <section>
+            <section data-transition="fade" data-markdown>
+                # これは
+                # 某社にてあった
+                # 事実を元にした
+                # おはなし
+            </section>
+        </section>
+
+        <section>
+            <section data-transition="fade" data-markdown>
+                ## しょぼちむ初めての開発チーム
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## チームリーダーからDBAを任される
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## (DBAってなんだろう…？データベース…？)
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## やっていた仕事
+                1. チームメンバー「このテーブルにこの項目を追加して」
+                2. しょぼちむ「おっけー」
+                3. サブリーダー「確認した。承認した。」
+                4. しょぼちむ：申請通りにER図をいじって設計書生成してコミット
+                5. チームメンバー「反映されてる。オッケー」
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## (まためんどくさい雑用を押し付けられた！)Oo
+                ## （´・ω・｀）
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## はい
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## データモデル設計の大切さ
+                ## わかってなかった
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## そしてすすんでいく外部設計工程
+            </section>
+        </section>
+
+        <section>
+            <section data-transition="fade" data-markdown>
+                ## そんなとき
+            </section>
+            <section data-transition="fade">
+                <h2>てんてんさんがチームにアーキテクトして参入</h2>
+                ･:*+.\\(( °ω° ))/.:+ <br/><br/>
+                <img src="images/tenten.jpeg" width="200"/>　　　<img src="images/tenten2.jpeg" width="200"/>
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## そしてX Dayを迎える
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## そう、あれは、クリスマス、、、
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## 明日で今年の仕事も終わる。そんな冬の日。
+            </section>
+            <section data-transition="fade">
+                <h2>てんてんさんがパートナーさんから相談をうける</h2>
+                <ul>
+                    <li class="fragment">パートナーさん「データの検索条件が複雑になっちゃう」</li>
+                    <li class="fragment">てんてんさん「データモデル設計を見てみる」</li>
+                    <li class="fragment">しょぼちむ「|дﾟ)ﾁﾗｯ」</li>
+                    <li class="fragment">てんてんさん「これってFKとか設定してないの？」</li>
+                    <li class="fragment">しょぼちむ「( ﾟдﾟ)ﾊｯ!!」</li>
+                    <li class="fragment">てんてんさん「データの整合性チェックどうしてるの？」</li>
+                    <li class="fragment">しょぼちむ「( ﾟдﾟ)ﾊｯ!!」</li>
+                </ul>
+            </section>
+            <section data-transition="fade" data-markdown>
+                # ( ﾟдﾟ)ﾊｯ !!
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## FK、そういえばそんなのあったな。 #あかん
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## ん？あれ？？あれ？？？
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## サブリーダーが作ってくれて
+                ## チームリーダーが業務的な観点でレビューして
+                ## パートナーさんがアーキテクトとしてレビューした
+                ## そんなER図
+            </section>
+            <section data-transition="fade">
+                <img src="images/edm1.png" width="740"/> <br/>
+                ※業務で使用してるER図ではありません。
+            </section>
+            <section data-transition="fade">
+                <img src="images/jyan1.jpg" width="740"/>
+            </section>
+            <section data-transition="fade">
+                <img src="images/jyan2.jpg" width="740"/>
+            </section>
+            <section data-transition="fade">
+                <img src="images/jyan3.jpg" width="740"/>
+            </section>
+            <section data-transition="fade" data-markdown>
+                # ＿人人人人人人＿
+                # ＞　ただの線　＜
+                # ￣Y^Y^Y^Y^Y￣
+            </section>
+            <section data-transition="fade" data-markdown>
+                ![tweet](images/tweet2.png)
+            </section>
+            <section data-transition="fade" data-markdown>
+                ![tweet](images/tweet3.png)
+            </section>
+            <section data-transition="fade">
+                <img src="images/jyan3.jpg" width="740"/> <br/>
+            </section>
+            <section data-transition="fade" data-markdown>
+                ![tweet](images/tweet4.png)
+            </section>
+            <section data-transition="fade" data-markdown>
+                # ＼(^o^)／
+            </section>
+            <section data-transition="fade" data-markdown>
+                ![tweet](images/tweet5.png)
+            </section>
+            <section data-transition="fade" data-markdown>
+                ![tweet](images/tweet6.png)
+            </section>
+            <section data-transition="fade" data-markdown>
+                ![tweet](images/no.gif)
+            </section>
+        </section>
+
+        <section>
+            <section data-transition="fade" data-markdown>
+                ## データモデルの修正をはじめた
+            </section>
+            <section data-transition="fade">
+                リレーションシップをペロっとはればいいんでしょ！！ <br/> <br/>
+                余裕余裕！！
+            </section>
+            <section data-transition="fade">
+                <img src="images/edm3.png" width="740"/>
+            </section>
+            <section data-transition="fade">
+                <img src="images/edm4.png" width="740"/> <br/>
+                子テーブルのPKが増えた(・_・)
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## そもそも親テーブルがもつ項目はこれでいいの？
+                ![oya](images/edm5.png)
+            </section>
+        </section>
+
+        <section>
+            <section data-transition="fade" data-markdown>
+                ## 親テーブルの項目の見直すことに
+                ## (´・ω・｀)
+            </section>
+            <section data-transition="fade">
+                <table style="margin-left: 10px;">
+                    <tr class="intro">
+                        <td>
+                            <img src="images/edm11-1.png" style="min-width: 260px; min-height: 501px;"/>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <div style="margin-left: 10px;">
+                                そもそもなんでPKに変更適用日時なるものが<br/>
+                                入っているかというと
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section data-transition="fade">
+                <img src="images/data1.png"/>
+                <ul>
+                    <li>ユーザ情報は画面から変更したい</li>
+                    <li>変更した設定をいつから適用するか決めたい</li>
+                    <li>過去にどんな設定だったのかを残したい</li>
+                    <li>※いくつかの項目は登録以降は変更しない</li>
+                </ul>
+            </section>
+            <section data-transition="fade">
+                <table style="margin-left: 10px;">
+                    <tr class="intro">
+                        <td>
+                            <img src="images/edm11.png" style="min-width: 260px; min-height: 501px;"/>
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <div style="margin-left: 10px;">親にしようとしていたテーブルは <br/>
+                            マスタで設定変更履歴で設定変更予約だった。 <br/> <br/></div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section data-transition="fade">
+                <table style="margin-left: 10px;">
+                    <tr class="intro">
+                        <td>
+                            <img src="images/edm11-2.png" style="min-width: 260px; min-height: 501px;" />
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <div style="margin-left: 10px;">
+                                さらにテーブルの項目に見直しをかけていくと、
+                                <ul>
+                                    <li>外部システムから参照するだけの項目があった</li>
+                                    <li>ある特定の業務でしか参照＋更新しない項目があった</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section data-transition="fade">
+                <table style="margin-left: 10px;">
+                    <tr class="intro">
+                        <td>
+                            <img src="images/data2.png" style="min-width: 260px; min-height: 501px;" />
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <div style="margin-left: 10px;">
+                                さらにテーブルの項目に見直しをかけていくと、
+                                <ul>
+                                    <li>外部システムから参照するだけの項目があった</li>
+                                    <li>ある特定の業務でしか参照＋更新しない項目があった</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section data-transition="fade">
+                <table style="margin-left: 10px;">
+                    <tr class="intro">
+                        <td>
+                            <img src="images/edm11.png" style="min-width: 260px; min-height: 501px;" />
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <div style="margin-left: 10px;">
+                                このままだと
+                                <ul>
+                                    <li>不変な項目をとる場合でもSQLに<br/>「1件を取得する」っていう条件を書かなきゃいけない</li>
+                                    <li> 不変な項目でも毎回INSERTするときにデータを入れないといけない</li>
+                                    <li>外部システムがデータを参照する場合にも<br/>「1件を取得する」っていう条件を書かなきゃいけない</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section data-transition="fade">
+                テーブルを役割ごと＋業務ごとにわけてみると、<br/> <br/>
+                    <img src="images/edm5.png" height="400" class="fragment"/>　　<img src="images/edm6.png" height="400" class="fragment"/>
+            </section>
+        </section>
+        <section>
+            <section data-transition="fade">
+                <img src="images/edm6.png"/>
+                <br/>
+                <ul>
+                    <li>ひとつひとつのテーブルがシンプルになった！</li>
+                    <li>各業務で、余計な項目をとらなくてもよくなった！</li>
+                    <li>不変な項目と変更可能な項目がわかりやすくなった！</li>
+                </ul>
+            </section>
+            <section data-transition="fade">
+                マスタテーブルからリレーションシップをつけてみる <br/>
+                <img src="images/edm7.png" class="fragment"/>
+            </section>
+            <section data-transition="fade">
+                <h1>つけられた</h1>
+                <br/> <br/>
+                ･:*+.\\(( °ω° ))/.:+
+            </section>
+            <section data-transition="fade">
+                <img src="images/edm7.png" height="400">
+                <ul>
+                    <li>それぞれの関係が明確になった！</li>
+                    <li>関係性がないのに線が引いてあったのを検知した！</li>
+                </ul>
+            </section>
+            <section data-transition="fade">
+                <h2>Before</h2>
+                <img src="images/edm1.png" height="550"/>
+            </section>
+            <section data-transition="fade">
+                <h2>After</h2>
+                <img src="images/edm7.png" height="550"/>
+            </section>
+            <section data-transition="fade" data-markdown>
+                ## さらに良かったこと
+            </section>
+            <section data-transition="fade">
+                <h2>それぞれのエンティティが</h2>
+                <h2>何対何の関係になっているのかを考えることで </h2>
+                <h2>不明確になっていた要件を</h2>
+                <h2>検知することができた！！</h2>
+            </section>
+            <section data-transition="fade">
+                ユーザとユーザグループのカーディナリティは？
+            </section>
+            <section data-transition="fade">
+                この２つのER図でシステムに差がでる <br/> <br/>
+                <img src="images/edm8.png" height="450"/>　　　<img src="images/edm9.png" height="450"/>
+            </section>
+            <section data-transition="fade">
+                <h2>最終的に</h2>
+                <ul>
+                    <li>ちゃんとデータの整合性を保つ仕組みがある(FK)</li>
+                    <li>各エンティティ同士の関係性もパッと確認することができる</li>
+                    <li>それぞれの項目の役割ごとにテーブルがわかれている</li>
+                </ul>
+                <img src="images/edm10.png" height="400"/>
+            </section>
+            <section data-transition="fade">
+                <h2>くやしかったこと</h2>
+                <ul class="fragment">
+                    <li>自分の知識がなくて、ただの線に違和感をもてなかった</li>
+                    <li>外部設計工程が終わってからの修正だったのでガッツリ修正はできなかった</li>
+                </ul>
+            </section>
+            <section data-transition="fade">
+                <h2>よかったこと</h2>
+                <ul class="fragment">
+                    <li>データモデル設計の大切さを知ることができた</li>
+                    <li>データモデル修正で色々相談していたときに「遅延評価」とか、いままで知らなかったことを知ることができた</li>
+                    <li>この勉強会をひらけた！！</li>
+                </ul>
+            </section>
+            <section data-transition="fade">
+                <h2>意識を改めなきゃいけないこと</h2>
+                <ul>
+                    <li>DBAは雑用なんかじゃない。大切なお仕事だった。</li>
+                    <li>(本当にごめんなさい)</li>
+                </ul>
+            </section>
+            <section data-transition="fade">
+                <h2>たいせつなこと</h2>
+                <h1 class="fragment">リレーションシップ</h1>
+                <h1 class="fragment">ちゃんとつけよう。</h1>
+            </section>
+        </section>
+
+        <section>
+            <section data-transition="fade" data-markdown>
+                ## ありがとうございました
+                ![bye](images/bye.gif)
+            </section>
+        </section>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/fade
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    {
+                        src: 'lib/js/classList.js', condition: function () {
+                        return !document.body.classList;
+                    }
+                    },
+                    {
+                        src: 'plugin/markdown/marked.js', condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                    },
+                    {
+                        src: 'plugin/markdown/markdown.js', condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                    },
+                    {
+                        src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                    },
+                    {
+                        src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                        return !!document.body.classList;
+                    }
+                    },
+                    {
+                        src: 'plugin/notes/notes.js', async: true, condition: function () {
+                        return !!document.body.classList;
+                    }
+                    }
+                ],
+                keyboard: {
+                    13: 'next' // go to the next slide when the ENTER key is pressed
+                }
+            });
+        </script>
+
+</body>
+</html>
